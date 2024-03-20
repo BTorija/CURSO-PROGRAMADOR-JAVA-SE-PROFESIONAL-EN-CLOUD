@@ -1,0 +1,21 @@
+package principal;
+
+public class SumarHastaMil {
+
+	public static void main(String[] args) {
+		//hasta que número tengo que sumar, empezando por 1 hasta
+		//llegar hasta mil?
+		int contador=0;
+		int i=1;
+		
+		do(+=i){
+			contador++;
+			
+		}
+			
+		}while{
+			i>=1000
+
+	}
+
+}
