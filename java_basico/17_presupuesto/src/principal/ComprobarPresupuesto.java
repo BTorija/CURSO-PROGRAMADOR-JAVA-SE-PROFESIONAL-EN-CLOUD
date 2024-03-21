@@ -23,7 +23,7 @@ public class ComprobarPresupuesto {
 			
 		}
 		System.out.println("Usted puede optar por "+ contador+ " modelos de coches");
-
+		sc.close();
 	}
 
 }

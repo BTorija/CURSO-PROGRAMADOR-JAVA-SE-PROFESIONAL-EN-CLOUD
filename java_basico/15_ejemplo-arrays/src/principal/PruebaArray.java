@@ -11,10 +11,10 @@ public class PruebaArray {
 		
 		for (int i=0;i<notas.length;i++) {
 			notas[i]++;
-			//System.out.println(notas[i]);
+			//System.out.println(notas[i]); //incluyendo en el for
 		}
 		for(int nota:notas) {
-			System.out.println(nota);
+			System.out.println(nota); //Usando for each si es solo para lectura de arrays
 		}
 
 	}

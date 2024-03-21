@@ -38,7 +38,7 @@ public class Notas {
 		}
 		System.out.println("La media de las notas es de "+(sumaNotas/notas.length));
 		System.out.println("la nota mas alta es "+notaMasAlta);			
-		
+		sc.close();
 
 	}
 

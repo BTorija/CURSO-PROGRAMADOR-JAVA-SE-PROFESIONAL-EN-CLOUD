@@ -5,8 +5,7 @@ public class SumarHastaMil {
 	public static void main(String[] args) {
 		//hasta que número tengo que sumar, empezando por 1 hasta
 		//llegar hasta mil o superarlo?
-		//bucle n+(n+i)?
-		//if >=1000 break?
+		
 		int num=0;
 		int suma=0;
 		do {
