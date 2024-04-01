@@ -48,7 +48,7 @@ public class StringFacturacion {
             resultado.append(depto.split("-")[0]).append("\n");
         }
 
-        // Mostrar resultados
+        // Mostrar resultado
         System.out.println(resultado.toString());
     }
 	
