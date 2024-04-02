@@ -2,6 +2,7 @@ package principal;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class SorteoPrimitiva {
 
@@ -13,6 +14,10 @@ public class SorteoPrimitiva {
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Introduce tu combinación:");
 		combinacionUsuario=sc.nextLine();
+		//Elimina duplicados en la cadena con "algo del futuro": Programación Funcional:
+		combinacionUsuario=Arrays.stream(combinacionUsuario.split(","))
+								.distinct()
+								.collect(Collectors.joining(","));
 		combinacionNumerica=generarCombinacion(combinacionUsuario);
 		combinacionGanadora=generarCombinacionGanadora();
 		aciertos=calcularAciertos(combinacionNumerica,combinacionGanadora);
@@ -21,6 +26,19 @@ public class SorteoPrimitiva {
 		System.out.println("Combinación de usuario: "+Arrays.toString(combinacionNumerica));
 		System.out.println("Combinación ganadora: "+Arrays.toString(combinacionGanadora));
 		System.out.println("Aciertos: "+aciertos);
+	
+		//¿Cuantas veces tengo que jugar para poder conseguir 6 aciertos?
+		/*long veces=0;
+		combinacionNumerica= new int[]{7,13,23,36,39,42};
+		do {
+			//generarCombinacionGanadora();
+			combinacionGanadora=generarCombinacionGanadora();
+			aciertos=calcularAciertos(combinacionNumerica,combinacionGanadora);
+			veces++;
+		}while(aciertos<6);
+		System.out.println("He tenido que jugar: "+veces+" veces");*/
+		
+		
 	}
 	static int[] generarCombinacion(String comb) {
 		
