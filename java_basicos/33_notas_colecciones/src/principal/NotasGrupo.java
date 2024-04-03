@@ -13,6 +13,8 @@ public class NotasGrupo {
 		-Nota media
 		-Aprobados
 		-Nota más alta */
+
+
 		ArrayList<Integer> notas=new ArrayList<Integer>();
 		int nota;
 		String respuesta;
@@ -25,7 +27,7 @@ public class NotasGrupo {
 			notas.add(nota);
 			System.out.println("Quieres introducir otra nota?(s/n)");
 			respuesta=sc.nextLine();
-			
+
 		}while(respuesta.equalsIgnoreCase("s"));
 		System.out.println("Media: "+calcularMedia(notas));
 		System.out.println("Aprobados: "+totalAprobados(notas));
