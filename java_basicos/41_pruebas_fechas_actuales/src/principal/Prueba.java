@@ -9,6 +9,11 @@ public class Prueba {
 		LocalDate f2=LocalDate.of(2021, 11, 3);
 		System.out.println(f1);
 		System.out.println(f2);
+		
+		LocalDate f3=LocalDate.of(2024, 2, 28); //LocalDate son objetos inmutables (genera un nuevo objeto no lo modifica)
+		System.out.println(f3.plusMonths(2));
+		System.out.println(f3.plusDays(10));
+		
 
 	}
 
