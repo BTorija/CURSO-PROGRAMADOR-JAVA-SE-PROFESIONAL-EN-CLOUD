@@ -11,22 +11,42 @@ public class NotasService {
 		4.- Ver todas
 		5.- Salir */
 	
-	ArrayList<Double> notas = new ArrayList<Double>();
-	public void agregarNota(double) {
-		
+	ArrayList<Double> notas=new ArrayList<Double>();
+	public void agregarNota(double nota) {
+		notas.add(nota);
 	}
 	public double media() {
-		
+		double media=0;
+		for(Double n:notas) {
+			media+=n;
+		}
+		return media/notas.size();
 	}
 	public double max() {
-		
+		double mayor=notas.get(0);
+		for(Double n:notas) {
+			if(n>mayor) {
+				mayor=n;
+			}
+		}
+		return mayor;
 	}
 	public double min() {
-		
+		double menor=notas.get(0);
+		for(Double n:notas) {
+			if(n<menor) {
+				menor=n;
+			}
+		}
+		return menor;
 	}
-	public double[] obtenerNotas(){
-		
+	public Double[] obtenerNotas() {
+		/*double[] todas=new double[notas.size()];
+		for(int i=0;i<notas.size();i++) {
+			todas[i]=notas.get(i);
+		}
+		return todas;*/
+		return notas.toArray(new Double[0]);
 	}
-	
 	
 }
