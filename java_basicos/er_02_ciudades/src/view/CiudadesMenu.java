@@ -6,8 +6,6 @@ import java.util.Scanner;
 import model.Ciudad;
 import service.CiudadesService;
 
-
-
 public class CiudadesMenu {
 	static CiudadesService service=new CiudadesService();
 	public static void main(String[] args) {
@@ -74,12 +72,25 @@ public class CiudadesMenu {
 			String pais=sc.nextLine();
 			Ciudad c=new Ciudad (nombre,habitantes,pais);
 			service.agregarCiudad(c);
+			sc.close();
 	}
 	
 	static void ciudadMasPoblada() {
+		Ciudad c=service.ciudadMasPoblada();
+		System.out.print("Nombre: "+c.getNombre()+" ");
+		System.out.print("Número de habitantes: "+c.getHabitantes()+" ");
+		System.out.println("Pais: "+c.getPais()+" ");
 		
 	}
 	static void buscarPorPais() {
+		
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Introduzca el nombre del Pais:");
+		String pais=sc.nextLine();
+		Ciudad c=service.buscarPorPais();
+		sc.close();
+
+		
 		
 	}
 

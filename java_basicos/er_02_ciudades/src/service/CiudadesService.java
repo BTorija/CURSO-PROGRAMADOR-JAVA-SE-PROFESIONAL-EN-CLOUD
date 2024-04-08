@@ -1,8 +1,11 @@
 package service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import model.Ciudad;
+
 
 
 
@@ -28,8 +31,29 @@ public class CiudadesService {
 		    return true;
 	}
 	
-	public ciudadMasPoblada() {
+	public Ciudad ciudadMasPoblada() {
+		Ciudad cAux=null;
+		int maxHabitantes=0;
+		for(Ciudad c:ciudades) {
+			if(c.getHabitantes()>maxHabitantes) {
+				maxHabitantes=c.getHabitantes();
+				cAux=c;
+			}
+		}
+		return cAux;
 		
+	}
+	
+	
+	public ArrayList<Ciudad> buscarPorPais(String pais) {
+		ArrayList<Ciudad> aux=new ArrayList<Ciudad>();
+		for(Ciudad c:ciudades) {
+		
+			if(c.getPais().equalsIgnoreCase(pais)) {
+				aux.add(c);
+			}
+		}
+		return aux;
 	}
 	
 	
