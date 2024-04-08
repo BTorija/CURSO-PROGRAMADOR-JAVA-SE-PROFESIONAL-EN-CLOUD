@@ -1,9 +1,8 @@
 package service;
 
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.HashSet;
-
 import model.Ciudad;
 
 
@@ -25,7 +24,7 @@ public class CiudadesService {
 	public boolean agregarCiudad(Ciudad ciudad) {
 		   for (Ciudad c : ciudades) {
 		        if (c.getNombre().equalsIgnoreCase(ciudad.getNombre()) && c.getPais().equalsIgnoreCase(ciudad.getPais()) || verificarPais(ciudad)==false ) {
-		        }
+		        return false;}
 		    }
 		    ciudades.add(ciudad);
 		    return true;

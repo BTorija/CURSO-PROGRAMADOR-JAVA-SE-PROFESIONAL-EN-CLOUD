@@ -1,6 +1,6 @@
 package view;
 
-import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.Ciudad;
@@ -26,72 +26,83 @@ public class CiudadesMenu {
 		2: muestra directamente los datos de la ciudad más poblada
 		3: se pide un nombre de pais y se muestran los datos de todas las ciudades de dicho pais
 		 */
-		
+
 		Scanner sc=new Scanner(System.in);
 		int opcion;
 		do {
 			presentarMenu();
 			opcion=sc.nextInt();
 			switch(opcion) {
-				case 1:
-					agregarCiudad();
-					break;
-				case 2:
-					ciudadMasPoblada();
-					break;
-				case 3:
-					buscarPorPais();
-					break;
-				case 4:
-					System.out.println("Adios!");
-					break;
-				
-				default:
-					System.out.println("Opción no válida!");
+			case 1:
+				agregarCiudad();
+				break;
+			case 2:
+				ciudadMasPoblada();
+				break;
+			case 3:
+				buscarPorPais();
+				break;
+			case 4:
+				System.out.println("Adios!");
+				break;
+
+			default:
+				System.out.println("Opción no válida!");
 			}
-		}while(opcion!=4);
+		} while (opcion != 4);
+
+		sc.close(); 
 	}
+
 	static void presentarMenu() {
 		System.out.println("""
 				1.- Nueva ciudad
 				2.- Ciudad más poblada
 				3.- Buscar por País
 				4.- Salir
-				
+
 				""");
 	}
-		
+
 
 	static  void agregarCiudad(){
-			Scanner sc=new Scanner(System.in);		
-			System.out.println("Introduzca el nombre de la Ciudad:");
-			String nombre=sc.nextLine();
-			System.out.println("Introduzca el número de habitantes:");
-			int habitantes=Integer.parseInt(sc.nextLine());
-			System.out.println("Introduzca el nombre del Pais:");
-			String pais=sc.nextLine();
-			Ciudad c=new Ciudad (nombre,habitantes,pais);
-			service.agregarCiudad(c);
-			sc.close();
+		Scanner sc=new Scanner(System.in);		
+		System.out.println("Introduzca el nombre de la Ciudad:");
+		String nombre=sc.nextLine();
+		System.out.println("Introduzca el número de habitantes:");
+		int habitantes=Integer.parseInt(sc.nextLine());
+		System.out.println("Introduzca el nombre del Pais:");
+		String pais=sc.nextLine();
+		Ciudad c=new Ciudad (nombre,habitantes,pais);
+		if(service.agregarCiudad(c)) {
+			System.out.println("La ciudad "+c.getNombre()+" ha sido dada de alta en "+ c.getPais()+" con éxito");
+		} else {
+			System.out.println("Ya existe la ciudad "+c.getNombre()+" en "+ c.getPais()+". Pruebe de nuevo");
+		}
+
 	}
-	
+
+
+
 	static void ciudadMasPoblada() {
 		Ciudad c=service.ciudadMasPoblada();
 		System.out.print("Nombre: "+c.getNombre()+" ");
 		System.out.print("Número de habitantes: "+c.getHabitantes()+" ");
 		System.out.println("Pais: "+c.getPais()+" ");
-		
+
 	}
 	static void buscarPorPais() {
-		
+
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Introduzca el nombre del Pais:");
 		String pais=sc.nextLine();
-		Ciudad c=service.buscarPorPais();
-		sc.close();
+		ArrayList<Ciudad> ciudadesPorPais= service.buscarPorPais(pais);
 
-		
-		
+
+		for (Ciudad c : ciudadesPorPais) {
+			System.out.println("Nombre: " + c.getNombre() + ", Habitantes: " + c.getHabitantes() + ", País: " + c.getPais());
+		}
 	}
+
 
 }
