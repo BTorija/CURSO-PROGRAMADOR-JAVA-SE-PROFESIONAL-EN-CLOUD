@@ -88,7 +88,7 @@ public class CiudadesMenu {
 		System.out.println("Introduzca el nombre del Pais:");
 		String pais=sc.nextLine();
 		Ciudad c=service.buscarPorPais();
-		sc.close();
+		
 
 		
 		

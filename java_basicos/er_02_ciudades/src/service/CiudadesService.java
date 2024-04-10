@@ -23,12 +23,16 @@ public class CiudadesService {
 	}
 	
 	public boolean agregarCiudad(Ciudad ciudad) {
-		   for (Ciudad c : ciudades) {
-		        if (c.getNombre().equalsIgnoreCase(ciudad.getNombre()) && c.getPais().equalsIgnoreCase(ciudad.getPais()) || verificarPais(ciudad)==false ) {
-		        }
-		    }
-		    ciudades.add(ciudad);
-		    return true;
+	    for (Ciudad c : ciudades) {
+	        if (c.getNombre().equalsIgnoreCase(ciudad.getNombre()) && c.getPais().equalsIgnoreCase(ciudad.getPais())) {
+	            return false; // Ciudad duplicada
+	        }
+	    }
+	    if (!verificarPais(ciudad)) {
+	        return false; // País no válido
+	    }
+	    ciudades.add(ciudad);
+	    return true;
 	}
 	
 	public Ciudad ciudadMasPoblada() {
