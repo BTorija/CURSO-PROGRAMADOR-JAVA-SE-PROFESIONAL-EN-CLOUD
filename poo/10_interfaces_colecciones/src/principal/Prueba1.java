@@ -2,6 +2,7 @@ package principal;
 
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 
@@ -30,4 +31,18 @@ public class Prueba1 {
 		return pares;
 		
 	}
+	
+	//Crear un método que reciba una coleccion de Integer
+	// y devuelve la media de los valores de dicha coleccion
+	
+	public static int mediaNumeros(Collection<Integer>col){
+		
+		int mediaNums=0;
+		for(Integer c:col){
+			mediaNums+=c;
+	
+			}
+		return mediaNums/col.size();
+		}
+		
 }
