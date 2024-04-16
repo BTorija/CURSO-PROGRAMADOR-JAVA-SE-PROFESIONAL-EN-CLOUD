@@ -15,4 +15,5 @@ public class Prueba4 {
 	printHashcode(200);
 	printHashcode(LocalDate.now());
 	}
+	// Esto es polimorfismo
 }
