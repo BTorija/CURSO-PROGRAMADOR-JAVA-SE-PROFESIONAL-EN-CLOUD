@@ -34,17 +34,14 @@ public class Triangulo extends Figura implements Operaciones{
 	public void girar(int grados) {
 		base+=grados;
 		altura+=grados;
-		System.out.println("El triangulo ha girado "+grados+ "grados");
 		
 	}
 
 	@Override
 	public int invertir() {
 		base--;
-		System.out.println("El triangulo ha sido invertido");
 		return base+altura;
 	}
-
+	
 }
-
 	
