@@ -2,7 +2,7 @@ package clases;
 
 class C1{
 	static void print() {
-		System.out.println("C!");
+		System.out.println("C1");
 	}
 }
 
