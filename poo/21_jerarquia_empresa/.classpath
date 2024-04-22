@@ -6,7 +6,12 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/compartida_javase_manana/librerias_externas/lombok.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+=======
+	<classpathentry kind="lib" path="C:/Users/manana/Documents/Bea_Manana/librerias externas/lombok.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Beita/Desktop/librerias/lombok.jar"/>
+>>>>>>> 5edf4fdd59ef184a7ca1ba2213831c2f7e407abb
 	<classpathentry kind="output" path="bin"/>
 </classpath>
