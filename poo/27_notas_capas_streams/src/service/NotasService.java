@@ -1,6 +1,8 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 public class NotasService {
 	ArrayList<Double> notas=new ArrayList<Double>();
@@ -8,29 +10,37 @@ public class NotasService {
 		notas.add(nota);
 	}
 	public double media() {
-		double media=0;
-		for(Double n:notas) {
-			media+=n;
-		}
-		return media/notas.size();
+		/*return notas.stream()
+				.mapToDouble(n->n)//DoubleStream
+				.average()
+				.orElse(0);*/
+		return notas.stream()
+				.collect(Collectors.averagingDouble(n->n));
 	}
 	public double max() {
-		double mayor=notas.get(0);
-		for(Double n:notas) {
-			if(n>mayor) {
-				mayor=n;
-			}
-		}
-		return mayor;
+		/*return notas.stream()
+				.mapToDouble(n->n)//DoubleStream
+				.max()
+				.orElse(0);*/
+		return notas.stream()
+				.collect(Collectors.maxBy(Comparator.comparingDouble(n->n)))
+				.orElse(0.0);
 	}
 	public double min() {
-		double menor=notas.get(0);
-		for(Double n:notas) {
-			if(n<menor) {
-				menor=n;
-			}
-		}
-		return menor;
+		/*return notas.stream()
+				.mapToDouble(n->n)
+				.min()
+				.orElse(0);*/
+		return notas.stream()
+				.collect(Collectors.minBy(Comparator.comparingDouble(n->n)))
+				.orElse(0.0);
+	}
+	public int totalAprobados() {
+		/*return (int)notas.stream()
+				.filter(n->n>=5)
+				.count();*/
+		return notas.stream()
+				.collect(Collectors.filtering(n->n>5, Collectors.counting())).intValue();
 	}
 	public Double[] obtenerNotas() {
 		/*double[] todas=new double[notas.size()];

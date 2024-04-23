@@ -5,13 +5,7 @@ import java.util.Arrays;
 public class Dominios1 {
 
 	public static void main(String[] args) {
-		String emails="""
-				aaa@gmail.com,\
-				bbb@tel.es,\
-				ccc@gmail.es,\
-				ddd@gmail.com,\
-				abc@hotmail.com,
-				""";
+		String emails="aaa@gmail.com,bbb@tel.es,ccc@gmail.es,ddd@gmail.com,abc@hotmail.com";
 		//indicar cuantas direcciones hay de cada dominio
 		
 		String[] direcciones=emails.split(",");
