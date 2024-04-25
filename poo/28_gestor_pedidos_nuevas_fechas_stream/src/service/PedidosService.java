@@ -16,8 +16,9 @@ public class PedidosService {
 	public void nuevoPedido(Pedido pedido) {
 		pedidos.add(pedido);
 	}
-	// devuelve el pedido más reciente, pero si hubiera más de uno 
-	//que cumpliese esa condicion (misma fecha)  que devuelva el que tiene más unidades
+	//devuelve el pedido más reciente, pero si hubiera más de uno
+	//que cumpla esa condición (misma fecha), que devuelva el que tiene
+	//más unidades
 	public Optional<Pedido> pedidoMasReciente() {
 		/*Pedido pAux=null;
 		LocalDate fMax=LocalDate.of(0,1,1); //1/1/1970
@@ -31,9 +32,9 @@ public class PedidosService {
 		}
 		return pAux;*/
 		return pedidos.stream()//Stream<Pedido>
-				//.max(Comparator.comparing(p->p.getFechaPedido()))
-				//.max((a,b)->a.getFechaPedido().compareTo(b.getFechaPedido()));
-				.max(Comparator.comparing((Pedido p)->p.getFechaPedido()).thenComparingInt(p->p.getUnidades()));
+				.max(Comparator.comparing((Pedido p)->p.getFechaPedido())
+						.thenComparingInt(p->p.getUnidades()));
+				
 				
 	}
 	
@@ -72,29 +73,29 @@ public class PedidosService {
 				.orElse(null);
 		
 	}
-	
-	//devuelve la lista de pedidos del producto recibido como parametro
+
+	//devuelve la lista de pedidos del producto recibido como parámetro
 	public List<Pedido> pedidosPorProducto(String producto){
 		return pedidos.stream()
 				.filter(p->p.getProducto().equalsIgnoreCase(producto))
 				.collect(Collectors.toList());
 	}
+	//devuelve el pedido con menor número de unidades. Si hay más de uno
+	//el primero que encuentre
 	
-	//devuelve el pedido con menor número de unidades. 
-	//Si hay más de uno el primero que encuentre
-	public Optional<Pedido> pedidoMenorUnidades() {
+	public Optional<Pedido> pedidoMenorUniudades() {
 		return pedidos.stream()
 				.min(Comparator.comparingInt(p->p.getUnidades()));
-	} 
-	//devuelve una cadena con los nombres de todos los productos sin duplicar 
-	//separados por un -
-	
-	public String nombresProductos() {
-		return pedidos.stream()
-				.map(p->p.getProducto())//Stream<String>
-				.distinct()
-				.collect(Collectors.joining("-"));
-				  
 	}
-	 
+	
+	//devuelve una cadena con los nombres de todos los productos, sin duplicar, 
+	//separados por un -
+	public String nombresProductos() {
+		return pedidos.stream()//Stream<Pedido>
+				.map(p->p.getProducto()) //Stream<String>
+				.distinct()//Stream<String>
+				.collect(Collectors.joining("-"));
+				
+				
+	}
 }

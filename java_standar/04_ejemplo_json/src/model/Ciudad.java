@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Alumno {
-	private String nombre;
-	private double nota;
+public class Ciudad {
+	private String ciudad;
+	private int poblacion;
+	private double temperatura;
 }
