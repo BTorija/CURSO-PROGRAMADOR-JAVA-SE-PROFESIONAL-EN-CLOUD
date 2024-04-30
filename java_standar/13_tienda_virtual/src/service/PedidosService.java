@@ -17,7 +17,7 @@ public class PedidosService {
 	String usuario="root";
 	String password="root";
 	public void guardarPedido(Pedido pedido) {
-		try(Connection con=DriverManager.getConnection(cadenaConexion);){
+		try(Connection con=DriverManager.getConnection(cadenaConexion,usuario,password);){
 			String sql="insert into pedidos(unidades,total,fechaPedido,codigoProducto) values(?,?,?,?)";
 			PreparedStatement ps=con.prepareStatement(sql);
 			ps.setInt(1, pedido.getUnidades());
@@ -33,7 +33,7 @@ public class PedidosService {
 	
 	public List<Pedido> pedidosEntreFechas(LocalDateTime f1, LocalDateTime f2){
 		List<Pedido> pedidos=new ArrayList<>();
-		try(Connection con=DriverManager.getConnection(cadenaConexion);){
+		try(Connection con=DriverManager.getConnection(cadenaConexion,usuario,password);){
 			String sql="select * from pedidos where fechaPedido>=? and fechaPedido<=?";
 			PreparedStatement ps=con.prepareStatement(sql);
 			ps.setTimestamp(1, Timestamp.valueOf(f1));
