@@ -1,4 +1,5 @@
 package service;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Arrays;
@@ -49,7 +50,7 @@ public class PaisesService {
 				.collect(Collectors.groupingBy(p -> p.getContinente()));
 	}
 	//nombre del pais
-	public  String getPaisFiltradoPor(String capital)  {
+	public String getPaisFiltradoPor(String capital)  {
 		return getStreamPaises()
 		.filter(p -> p.getCapital() != null && p.getCapital().equals(capital))//Stream<Pais>
 		.findFirst()//Optional<Pais>

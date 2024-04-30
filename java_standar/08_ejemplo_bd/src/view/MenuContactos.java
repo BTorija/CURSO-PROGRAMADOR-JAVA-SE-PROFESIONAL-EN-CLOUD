@@ -16,13 +16,13 @@ public class MenuContactos {
 			opcion=sc.nextInt();//lee la opción elegida
 			switch(opcion) { //evaluamos
 				case 1:
-					insertarContacto();
+					nuevoContacto();
 					break;
 				case 2:
 					eliminarContacto();
 					break;
 				case 3:
-					actualizarEdad();
+					actualizarContacto();
 					break;				
 				case 4:
 					System.out.println("---Adios---");

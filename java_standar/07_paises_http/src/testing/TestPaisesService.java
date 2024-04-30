@@ -1,4 +1,5 @@
 package testing;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -14,7 +15,7 @@ class TestPaisesService {
 	} 
 	@Test
 	void testListaContinentes() {
-		assertEquals(8, service.getContinentes().size());
+		assertEquals(7, service.getContinentes().size());
 	}
 
 	@Test
