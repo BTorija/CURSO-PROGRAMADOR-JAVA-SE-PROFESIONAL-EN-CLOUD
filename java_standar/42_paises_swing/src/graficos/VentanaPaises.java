@@ -3,17 +3,19 @@ package graficos;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import adaptadores.ListModelContinentesImpl;
+import service.PaisesServiceFactory;
 
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
-import java.awt.SystemColor;
-import java.awt.Font;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 public class VentanaPaises extends JFrame {
 
@@ -43,25 +45,29 @@ public class VentanaPaises extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setBackground(SystemColor.activeCaption);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Continentes");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel.setBounds(10, 23, 80, 14);
+		JLabel lblNewLabel = new JLabel("Continentes:");
+		lblNewLabel.setBounds(30, 27, 81, 14);
 		contentPane.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(100, 22, 102, 125);
+		scrollPane.setBounds(109, 27, 88, 87);
 		contentPane.add(scrollPane);
 		
 		JList<String> listContinentes = new JList<>();
-		scrollPane.setViewportView(listContinentes);
-		listContinentes.setBackground(SystemColor.controlHighlight);
+		listContinentes.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				String seleccionado=listContinentes.getSelectedValue();
+				var service=PaisesServiceFactory.getPaisesService();
+				JOptionPane.showMessageDialog(VentanaPaises.this, "Paises de "+seleccionado+" :"+service.getPaisesFiltradosPor(seleccionado).size());
+			}
+		});
 		listContinentes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPane.setViewportView(listContinentes);
 		//asociamos adaptador a la lista
 		listContinentes.setModel(new ListModelContinentesImpl());
 	}
